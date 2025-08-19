@@ -30,18 +30,18 @@ Supernova theme park has been facing uneven guest satisfaction scores and fluctu
 
 ## Repo Navigation
 
-1. [Database](#Database)
+1. [Database Management](#Database)
    - [Orientation](#Orientation)
    - [Schema](#Schema)
    - [Wire Dimension](#Wire-Dimension)
-2. [SQL](#SQL)
+2. [SQL Cleaning & Analysis](#SQL)
    - [Cleaning](#Cleaning)
      - [CTEs & Windows](#CTEs-&-Windows)
      - [Feature Engineering](#Feature-Engineering)
    - [EDA](#EDA)
-3. [Python](#Python)
-   -[Visualizations](#Visualizations)
-4. [Findings](#Findings)
+3. [Visualizations in Python](#Python)
+   - [Visualizations](#Visualizations)
+4. [Findings & Recommendations](#Findings)
    - [Insights & Recommendations](#Insights-&-Recommendations)
    - [Ethics & Biases](#Ethics-&-Biases)
 5. [Closing Regards](#Closing=Regards)
