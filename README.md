@@ -31,7 +31,6 @@ Supernova theme park has been facing uneven guest satisfaction scores and fluctu
 ## Repo Navigation
 
 1. [Database Management](#Database)
-   - [Orientation](#Orientation)
    - [Schema](#Schema)
    - [Wire Dimension](#Wire-Dimension)
 2. [SQL Cleaning & Analysis](#SQL)
@@ -48,9 +47,26 @@ Supernova theme park has been facing uneven guest satisfaction scores and fluctu
 
 ## Database
 
-### Orientation
+<p align=center>
+Familiarizing myself with the database is a crucial part of working with the dataset. Mapping out the Primary/Foreign keys, column types, and whether NULLs are allowed were all information that I had to collect to effectively perform exploratory data analysis.
+</p>
 
 ### Schema
+
+<p align=center>
+This database has a Star Schema.
+</p>
+
+<p align=center>
+A star schema is a database model that categorizes data into two types, fact and dimension, for the purpose of distinctly defining collected data using reference tables. Simply, the dimension tables provide context and purpose to the data displayed in the fact tables.
+</p>
+
+![]()
+
+<p align=center>
+In this table, the dimensional tables provide reference information to the factual tables, which represent the real numbers collected for the themepark, Supernova.
+</p>
+
 
 ### Wire Dimension
 
