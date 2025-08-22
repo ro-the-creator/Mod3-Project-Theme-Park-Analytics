@@ -34,6 +34,7 @@ Supernova theme park has been facing uneven guest satisfaction scores and fluctu
 
 1. [Database Management](#Database)
    - [Schema](#Schema)
+     - [Benefits to Schema](#Benefits-to-Star-Schema)
    - [Wire Dimension](#Wire-Dimension)
 2. [SQL Cleaning & Analysis](#SQL)
    - [Cleaning](#Cleaning)
