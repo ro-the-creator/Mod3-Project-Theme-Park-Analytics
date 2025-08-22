@@ -123,6 +123,17 @@ STRFTIME('%Y%m%d', visit_date)
 ```
 </div>
 
+<br>
+
+<div align=center>
+
+![](figures/dim_dates.png)
+</div>
+
+<p align=center>
+In the end, we get a simple yet effective table.
+</p>
+
 ## SQL
 
 ### Cleaning
