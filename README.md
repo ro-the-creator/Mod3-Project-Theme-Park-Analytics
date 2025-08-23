@@ -32,23 +32,23 @@ Supernova theme park has been facing uneven guest satisfaction scores and fluctu
 
 ## Repo Navigation
 
-1. [Database Management](#Database)
+1. [Database Management](#Database-Management)
    - [Schema](#Schema)
      - [Benefits to Schema](#Benefits-to-Star-Schema)
    - [Wire Dimension](#Wire-Dimension)
-2. [SQL Cleaning & Analysis](#SQL)
+2. [SQL Cleaning & Analysis](#SQL-Cleaning-&-Analysis)
    - [Cleaning](#Cleaning)
-     - [CTEs & Windows](#CTEs-&-Windows)
      - [Feature Engineering](#Feature-Engineering)
+     - [CTEs & Windows](#CTEs-&-Windows)
    - [EDA](#EDA)
 3. [Visualizations in Python](#Python)
    - [Visualizations](#Visualizations)
 4. [Findings & Recommendations](#Findings)
    - [Insights & Recommendations](#Insights-&-Recommendations)
    - [Ethics & Biases](#Ethics-&-Biases)
-5. [Closing Regards](#Closing=Regards)
+5. [Closing Regards](#Closing-Regards)
 
-## Database
+## Database Management
 
 <p align=center>
 Familiarizing myself with the database is a crucial part of working with the dataset. Mapping out the Primary/Foreign keys, column types, and whether NULLs are allowed were all information that I had to collect to effectively perform exploratory data analysis.
@@ -135,13 +135,13 @@ STRFTIME('%Y%m%d', visit_date)
 In the end, we get a simple yet effective table.
 </p>
 
-## SQL
+## SQL Cleaning & Analysis
 
 ### Cleaning
 
-#### CTEs & Windows
-
 #### Feature Engineering
+
+#### CTEs & Windows
 
 ### EDA
 
