@@ -45,7 +45,6 @@ Supernova theme park has been facing uneven guest satisfaction scores and fluctu
 4. [Findings & Recommendations](#Findings)
    - [Insights & Recommendations](#Insights-&-Recommendations)
    - [Ethics & Biases](#Ethics-&-Biases)
-5. [Closing Regards](#Closing-Regards)
 
 ## Database Management
 
@@ -261,13 +260,46 @@ A documented list of the CTEs and Window Functions can be found [here](https://d
 The culmination of all the SQL coding finally led to producing visualizations in Python. Using sqlite3 and Pandas libraries, I was able to input queries into a notebook to produce Seaborn visuals.
 </p>
 
+<div align='center'>
 
+![](figures/fig1.png)
+
+![](figures/fig2.png)
+
+![](figures/fig3.png)
+
+</div>
 
 ## Findings
 
 ### Insights & Recommendations
 
+<p align=center>
+Based on my findings, I recommend to the stakeholders that there should be an emphasized focus on allocating resources for weekends, which is shown to be the most profitable days of the week.
+</p>
+
+<p align=center>
+Furthermore, with the newly established high purchase category, marked at $133.94, a new target goal to convert customers' average total spending across tickets and in-park purchases can be prioritized.
+</p>
+
+<p align=center>
+Finally, with the concern of low satisfaction scores, I recommend a greater focus on kids' rides, which seem to consistently get high satisfaction scores. While this alone from the figure seems like a big jump, it can also be supported by the spending delta vs. prior visits, which seems to show increased spending for larger parties. Larger parties at a theme park are likely families, meaning prioritizing kids rides can be an effective means to improve satisfaction scores and raise revenue.
+</p>
+
 ### Ethics & Biases
 
+<p align=center>
+In cleaning, analyzing, and providing recommendations with this dataset, there were several decisions I had to make that introduced bias. While I strive to maintain an ethical, transparent approach to data analytics, I ran into certain issues that could not be fixed due to time constraints.
+</p>
 
-## Closing Regards
+<p align=center>
+The only major hinderance that could not be fixed with limited time was renumerating the attraction_id column in dim_attractions, which turned inconsistent due to dropping two duplicate rows. While I was able to reorient the attraction_id values that were dropped in the fact_ride_events table, I was unable to renumerate the original Primary Key in dim_attractions.
+</p>
+
+<p align=center>
+Furthermore, certain cleaning decisions were made that were based on assumptions. For example, the NULL promotion code values were assumed to be no promo code input.
+</p>
+
+
+> [!NOTE]
+>  This is a fictitious scenario created by the GitHub authors for academic purposes only.
