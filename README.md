@@ -40,7 +40,6 @@ Supernova theme park has been facing uneven guest satisfaction scores and fluctu
    - [Cleaning](#Cleaning)
      - [Feature Engineering](#Feature-Engineering)
      - [CTEs & Windows](#CTEs-&-Windows)
-   - [EDA](#EDA)
 3. [Visualizations in Python](#Python)
    - [Visualizations](#Visualizations)
 4. [Findings & Recommendations](#Findings)
@@ -139,16 +138,129 @@ In the end, we get a simple yet effective table.
 
 ### Cleaning
 
+<p align=center>
+The cleaning process for the theme park database included a plethora of actions. Overall, however, cleaning mainly consisted of creating new columns to preserve old data, validating keys, finding and dealing with duplicates, and filling in NULLs.
+Below is a full list of cleaning actions:
+</p>
+
+**Cleaned columns across all tables**
+
+- dim_attraction
+  - attraction_names
+    - Uppercased, trimmed, and removed punctuation marks
+- dim_guest
+  - home_state
+    - Changed all to abbreviations, uppercased
+  - marketing_opt_in
+    - Uppercased, changed to one letter
+- dim_ticket
+  - base_price_cents
+     -converted to dollars
+- fact_visits
+  - promotion_code
+    - Uppercased, removed extra characters
+  - total_spend_cents
+    - trimmed, removed extra characters
+- fact_purchases
+  - amount_cents
+    - trimmed, removed extra characters
+  - payment_method
+    - Trimmed and uppercased
+
+**Something to Note:**
+amount_cents and total_spend_cents were converted to dollars in new columns, where it was used in most EDA. (More Information in Feature Engineering)
+
+<br>
+
+<p align=center>
+For validating keys, functions were run on the Primary and Foreign keys to find orphans.
+</p>
+
+<p align=center>
+Validating keys means making sure there are no orphans in the data. An orphan relative to SQL is a foreign key row, known as the child, that does not match a primary key row, known as the parent. Parent rows can have no corresponding children row because it means that the data for that dimension has never been recorded, but a child row cannot have an unmatched parent row because all recorded data must correspond to an established dimension.
+</p>
+
+<p align=center>
+To do this, a simple function is run (example on one set of keys):
+</p> 
+
+```c++
+SELECT v.visit_id, v.guest_id
+FROM fact_visits v
+LEFT JOIN dim_guest g ON g.guest_id = v.guest_id
+WHERE g.guest_id IS NULL;
+```
+
+<p align=center>
+There were no orphans!
+</p>
+
+<br>
+
+<p align=center>
+For filling in NULLs, the following steps were done to fill them in:
+</p>
+
+- Filled in NULL rows in dim_guest: marketing_opt_in_clean with ‘N’. Assumption that NULL row means no.
+- Filled in fact_purchases: amount_dollar with ‘Unknown’. Cannot deduct the price of the item from the current data. Need the data from those rows, can’t drop them.
+- Filled in fact_ride_events: wait_minutes & photo_purchase.
+- Filled wait_minutes with 0, assuming that null row means there was no wait time.
+- Filled in photo_purchase with N for No, assuming no entry means no photo purchase.
+- Filled in fact_visits: spend_dollar & promotion_code_clean
+- Filled spend_dollar with ‘Unknown’, Cannot deduct price from ticket+promo.
+- Filled promotion_code_clean with ‘None’. Assumption that no entry means no promo code.
+
+<p align=center>
+Overall, only two duplicate rows were dropped in dim_attractions.
+</p>
+  
 #### Feature Engineering
+
+<p align=center>
+Feature engineering consists of creating new views from the existing columns in the tables, with the idea of gaining additional insight. For the new insights, I aimed to look into how long customers stay at the park, how much they spend on average, and how often they use promo codes:
+</p>
+
+1. Created stay_duration_minutes, which roughly calculates how many minutes the guests stayed at the park. This helps give a quick insight rather than to mentally calculate it by looking at entry_time and exit_time. 
+    - Found that most people stay for 600 minutes (10 hours)
+2. Created wait_buckets, which puts wait times under a specific timeframe category. This helps for grouping wait times for rides, which can give insight as to       which rides lines may be taking longer.
+    - Found frequency of grouped wait buckets. Found that No Wait (0 mins), Very Long Wait (>45 mins), and Long Wait (31-45 mins) were the top three most   frequent occurrences.
+    - Also found average wait times per bucket.
+  
+<div align="center">
+  
+|Wait Bucket|Average Wait Time|
+|:--------------:|:--------:|
+|No Wait|0.0|
+|Short Wait|6.1|
+|Medium Wait|24.11|
+|Long Wait|36.07|
+|Very Long Wait|65.39|
+
+</div>
+
+3. Finding out the average spend in dollars per customer, and categorizing them as Low, Regular, or High Spenders.
+  - There were 3 Low, 4 Regular, and 3 Premium.
+4. Frequency of promo code use, and the total revenue generated from in-park purchases when those promo codes are used. Good for checking if promo codes are   leading to profits
+  - SUMMER25 promo code is generating revenue, total of $840.49.
+  - VIPDAY has similar usage to no promo code, but generating significantly less revenue.
 
 #### CTEs & Windows
 
-### EDA
+<p align=center>
+Using CTEs and Window functions was a vital part of the entire SQL coding process. CTEs helped with organizing the code and making it readable, as well as producing large, complicated queries in a digestible way.
+</p> 
+
+A documented list of the CTEs and Window Functions can be found [here](https://docs.google.com/document/d/1apobbUSqXWydtaSXdV5jplz4-c9q2QhUEAKyZ3diFIU/edit?usp=sharing).
 
 
 ## Python
 
 ### Visualizations
+
+<p align=center>
+The culmination of all the SQL coding finally led to producing visualizations in Python. Using sqlite3 and Pandas libraries, I was able to input queries into a notebook to produce Seaborn visuals.
+</p>
+
 
 
 ## Findings
